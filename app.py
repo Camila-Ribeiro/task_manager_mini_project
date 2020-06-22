@@ -7,10 +7,13 @@ if os.path.exists('env.py'):
     import env
 
 app = Flask(__name__)
-app.config['MONGO_DBNAME'] = os.environ.get('SECRET_KEY')
-app.config['MONGO_URI'] = os.environ.get('MONGO_URI')
-app.secret_key = os.environ.get('SECRET_KEY')
+# app.config['MONGO_DBNAME'] = os.environ.get('SECRET_KEY')
+# app.config['MONGO_URI'] = os.environ.get('MONGO_URI')
+# app.secret_key = os.environ.get('SECRET_KEY')
+os.environ['SECRET_KEY'] = 'USerRooT'
 
+os.environ['MONGO_DBNAME'] = 'task_manager'
+os.environ['MONGO_URI'] = os.getenv('MONGO_URI', 'mongodb+srv://root:USerRooT@myfirstcluster-cpqdb.mongodb.net/task_manager?retryWrites=true&w=majority')
 mongo = PyMongo(app)
 
 # @app.route('/')
